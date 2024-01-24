@@ -12,6 +12,32 @@
       <h1>Weather Dashboard</h1>
     </header>
 
+    <main>
+      <aside>
+        <!-- Search city -->
+        <h3>Search city:</h3>
+        <form>
+          <input placeholder="Enter city name" type="text" />
+          <button type="submit">Search</button>
+        </form>
+
+        <div>
+          <h3>City Search History:</h3>
+        </div>
+      </aside>
+
+      <section>
+        <div>
+          <!-- Current weather of city -->
+          <h2></h2>
+          <p>Temp: <span id="temp-current"></span></p>
+          <p>Wind: <span id="wind-current"></span></p>
+          <p>Humidity: <span id="humidity-current"></span></p>
+        </div>
+        <h3>Next 5 Days Forecast</h3>
+      </section>
+    </main>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="assets/script.js"></script>
   </body>
