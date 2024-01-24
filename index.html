@@ -17,24 +17,32 @@
         <!-- Search city -->
         <h3>Search city:</h3>
         <form>
-          <input placeholder="Enter city name" type="text" />
-          <button type="submit">Search</button>
+          <input placeholder="Enter city name" type="text" id="search-input" />
+          <button type="submit" id="search-btn">Search</button>
         </form>
 
         <div>
           <h3>City Search History:</h3>
+          <!-- Javascript insert -->
         </div>
       </aside>
 
       <section>
         <div>
           <!-- Current weather of city -->
-          <h2></h2>
+          <h2 id="selected-city-name"></h2>
           <p>Temp: <span id="temp-current"></span></p>
           <p>Wind: <span id="wind-current"></span></p>
           <p>Humidity: <span id="humidity-current"></span></p>
         </div>
-        <h3>Next 5 Days Forecast</h3>
+        <div>
+          <!-- 5 Day Forecast Section -->
+          <h3>Next 5 Days Forecast</h3>
+          <div id="forecast-box">
+            <!-- Javascript insert -->
+          </div>
+        </div>
+
       </section>
     </main>
 
