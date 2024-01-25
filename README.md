@@ -13,7 +13,7 @@
   Application Deployment URL: https://r-basu.github.io/weather-dashboard
 
   ## Screenshot
-  ![Preview of website](./assets/images/weather-dashboard.png)
+  ![Preview of website](./assets/images/weather-dashboard-example.png)
 
     
   ## Questions
