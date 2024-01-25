@@ -99,7 +99,7 @@ function updateHistory() {
   if (cityHistoryArr.length > 0) {
     const clearBtn = document.createElement("button");
     clearBtn.textContent = `Clear City History`;
-
+    clearBtn.id = `clear-btn`
     historyEl.appendChild(clearBtn);
 
     clearBtn.addEventListener("click", function () {
@@ -109,4 +109,9 @@ function updateHistory() {
   }
 }
 
-// document.getElementById(`city-history`).addEventListener(`click`);
+document.getElementById(`city-history`).addEventListener(`click`, function(e) {
+    if (e.target && e.target.nodeName === `BUTTON` && e.target.id !==`clear-btn`) {
+        getCity(e.target.textContent);
+
+    }
+});
