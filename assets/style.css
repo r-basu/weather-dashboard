@@ -4,7 +4,13 @@
 }
 
 #city-history {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+}
+
+#forecast-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px
+}
