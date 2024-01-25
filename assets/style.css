@@ -1,0 +1,18 @@
+#maincontainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#forecast-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.daily-forecast-box {
+    background-color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }

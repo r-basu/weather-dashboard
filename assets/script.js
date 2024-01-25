@@ -18,16 +18,16 @@ function getCity(city) {
     .then((city) => {
       currentWeather(city);
       get5DayCast(city.coord.lat, city.coord.lon);
-      cityHistoryFn(city)
+      cityHistoryFn(city);
     })
     .catch((error) => console.log(error));
 }
 
 //Current Weather function to insert returned API results onto the page
 function getIcon(icon) {
-    const iconUrl = `http://openweathermap.org/img/w/${icon}.png`;
-    return `<img src="${iconUrl}" alt="Weather icon">`;
-  }
+  const iconUrl = `http://openweathermap.org/img/w/${icon}.png`;
+  return `<img src="${iconUrl}" alt="Weather icon">`;
+}
 
 function currentWeather(city) {
   const cityNameEl = document.getElementById(`selected-city-name`);
@@ -56,11 +56,12 @@ function get5DayCast(lat, lon) {
 
 function forecastWeather(forecast) {
   const forecastBox = document.getElementById("forecast-box");
+  forecastBox.innerHTML = ``;
 
   for (let i = 0; i < forecast.list.length; i += 8) {
     // API returns data for every 3 hours. so +8 is a new day
-
     const forecastEl = document.createElement("div");
+    forecastEl.className = `daily-forecast-box`;
     forecastEl.innerHTML = `
     <p>${new Date(forecast.list[i].dt_txt).toLocaleDateString()}</p>
     <p>${getIcon(forecast.list[i].weather[0].icon)}</p>
@@ -75,7 +76,7 @@ function forecastWeather(forecast) {
 //Functions for city search history
 function cityHistoryFn(city) {
   const cityHistoryArr = JSON.parse(localStorage.getItem("cityHistory")) || [];
-  if (!cityHistoryArr.some(item => item.name === city.name)) {
+  if (!cityHistoryArr.some((item) => item.name === city.name)) {
     cityHistoryArr.push(city);
     localStorage.setItem("cityHistory", JSON.stringify(cityHistoryArr));
   }
@@ -86,7 +87,7 @@ function updateHistory() {
   const cityHistoryArr = JSON.parse(localStorage.getItem("cityHistory")) || [];
   const historyEl = document.getElementById(`city-history`);
 
-  historyEl.innerHTML = ""
+  historyEl.innerHTML = "";
 
   cityHistoryArr.forEach(function (city) {
     const cityBtn = document.createElement("button");
