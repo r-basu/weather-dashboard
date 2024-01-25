@@ -30,13 +30,43 @@ function currentWeather(city) {
   const humidityEl = document.getElementById(`humidity-current`);
 
   cityNameEl.textContent = `${city.name} (${new Date().toLocaleDateString()})`;
+  cityNameEl.innerHTML += getIcon(city.weather[0].icon);
   tempEl.textContent = `${city.main.temp}°C`;
   windEl.textContent = `${city.wind.speed} km/h`;
   humidityEl.textContent = `${city.main.humidity}%`;
 }
 
+function getIcon(icon) {
+  const iconUrl = `http://openweathermap.org/img/w/${icon}.png`;
+  return `<img src="${iconUrl}" alt="Weather icon">`;
+}
+
+// Functions to fetch forecast weather and running function to insert returned API results onto page
 function get5DayCast(lat, lon) {
   fetch(
     `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
-  );
+  )
+    .then((res) => res.json())
+    .then((forecast) => {
+      forecastWeather(forecast);
+    })
+    .catch((error) => console.log(error));
+}
+
+function forecastWeather(forecast) {
+  const forecastBox = document.getElementById("forecast-box");
+
+  for (let i = 0; i < forecast.list.length; i += 8) {
+    // API returns data for every 3 hours. so +8 is a new day
+
+    const forecastEl = document.createElement("div");
+    forecastEl.innerHTML = `
+    <p>${new Date(forecast.list[i].dt_txt).toLocaleDateString()}</p>
+    <p>${getIcon(forecast.list[i].weather[0].icon)}</p>
+    <p>Temp: ${forecast.list[i].main.temp} °C</p>
+    <p>Wind: ${forecast.list[i].wind.speed} km/h</p>
+    <p>Humidity: ${forecast.list[i].main.humidity}%</p>
+    `;
+    forecastBox.appendChild(forecastEl);
+  }
 }
