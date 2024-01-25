@@ -3,14 +3,30 @@
     flex-wrap: wrap;
 }
 
+header {
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(to right, rgb(62, 0, 231), rgb(33, 23, 62));
+    color: white;
+}
+
 #city-history {
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-start;
 }
 
+#current-weather {
+    border: 1px solid black;
+}
+
 #forecast-box {
   display: flex;
   flex-wrap: wrap;
   gap: 20px
+}
+
+.daily-forecast-box {
+    background-color: rgb(9, 30, 115);
+    color: white;
 }
